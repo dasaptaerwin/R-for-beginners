@@ -14,14 +14,25 @@ Berikut ini adalah outline buku ini
 # BAB 1 PENDAHULUAN
 
 ## Sekilas R
+Menjelaskan sekilas mengenai R.
+
 ## Sejarah R
+Menjelaskan sekilas tentang awal pembuatan R dan perkembangannya.
+
 ## Mengapa R
+Mengapa banyak saintis menggunakan R? Dapat dibaca di bab ini.
 ### R gratis, _open source_, dan _cross platform_
 ### R mendukung prinsip _reproducibility_
 ### R menghasilkan visualisasi yang berkualitas tinggi 
+
 ## Mengenal Lingkungan R
+R terdiri dari R base dan R Studio IDE. Ada R code, ada R package. Apakah itu semua? Anda dapat membacanya di bab ini
+
 ## Instalasi R
+Bab ini menjelaskan secara singkat bagaimana menginstalasi R di PC atau laptop anda.
+
 ## Menggunakan buku ini
+Bab ini menjelaskan bagaimana sebaiknya anda menggunakan buku ini sebagai panduan.
 
 # BAB 2
 
@@ -48,6 +59,7 @@ Berikut ini adalah outline buku ini
 
 
 # BAB 10 BEBERAPA CONTOH KODE PROGRAM R
+Beberapa contoh kode program untuk analisis dasar dan analisis statistik diberikan pada bab ini.
 
 ## Manipulasi tabel/data frame
 ## Analisis deskriptif
