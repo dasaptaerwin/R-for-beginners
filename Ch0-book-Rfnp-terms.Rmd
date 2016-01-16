@@ -1,0 +1,34 @@
+---
+title: "Terminologi"
+author: "Dasapta Erwin Irawan and Prana Ugi"
+date: "September 3, 2014"
+output:
+  html_document:
+    toc: true
+---
+
+#Terminologi:
+Beberapa terminologi yang akan sering digunakan dalam buku ini:
+
++ R                 | R
++ R Studio          | R Studio
++ R script          | skrip R
++ R code            | kode R
++ R package         | paket R
++ add on package    | paket tambahan
++ Console           | konsol
++ R markdown        | R markdown
++ CRAN              | CRAN
++ Vignettes         | vinyet
++ Data frame        | data frame
++ Command           | perintah
++ Function          | fungsi
++ LaTeX             | LaTeX
++ Syntax            | sintaks
++ Error             | kesalahan
++ Warnings          | peringatan
++ Upload            | unggah
++ Download          | unduh
+
+
+

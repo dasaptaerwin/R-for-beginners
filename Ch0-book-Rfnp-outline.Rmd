@@ -1,0 +1,71 @@
+---
+title: "Pengenalan bahasa pemrograman R: untuk non-programmer"
+author: "Dasapta Erwin Irawan dan Prana Ugi"
+date: "August 23, 2015"
+output:
+  pdf_document:
+    toc: true
+    number_sections: true
+---
+
+
+Berikut ini adalah outline buku ini
+
+# BAB 1 PENDAHULUAN
+
+## Sekilas R
+## Sejarah R
+## Mengapa R
+### R gratis, _open source_, dan _cross platform_
+### R mendukung prinsip _reproducibility_
+### R menghasilkan visualisasi yang berkualitas tinggi 
+## Mengenal Lingkungan R
+## Instalasi R
+## Menggunakan buku ini
+
+# BAB 2
+
+
+# BAB 3
+
+
+# BAB 4
+
+
+# BAB 5
+
+
+# BAB 6
+
+
+# BAB 7
+
+
+# BAB 8
+
+
+# BAB 9
+
+
+# BAB 10 BEBERAPA CONTOH KODE PROGRAM R
+
+## Manipulasi tabel/data frame
+## Analisis deskriptif
+## Plotting
+## Analisis korelasi
+## Analisis spasial
+
+
+# DAFTAR PUSTAKA
+
+https://www.rochester.edu/college/psc/thestarlab/help/rcourse/R-Course.pdf
+
+http://www2.ims.nus.edu.sg/preprints/2006-34.pdf
+
+https://www3.nd.edu/~mclark19/learn/Introduction_to_R.pdf
+
+http://data.princeton.edu/R/introducingR.pdf
+
+
+
+
