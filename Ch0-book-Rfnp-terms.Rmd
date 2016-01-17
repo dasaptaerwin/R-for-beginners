@@ -30,5 +30,23 @@ Beberapa terminologi yang akan sering digunakan dalam buku ini:
 + Upload            | unggah
 + Download          | unduh
 
-
++ _Spreadsheet_
++ Data
++ _Data frame_
++ Kolom dan baris
++ Variabel dan kasus/sampel
++ Numerik/_Numeric_ (tipe data)
++ _Integer_ (tipe data)
++ Kompleks/_Complex_ (tipe data)
++ Logikal/_Logical_ (tipe data)
++ Karakter/_Character_ (tipe data)
++ Obyek/_object_
++ Piranti Lunak (P/L)/_Software_ (S/W)
++ vektor/_vectors_
++ _lists_
++ _arrays_
++ matrix/_matrices_
++ tabel/_tables_
++ _data frames_
++ array
 
