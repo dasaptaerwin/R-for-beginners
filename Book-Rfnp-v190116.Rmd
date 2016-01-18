@@ -2,12 +2,12 @@
 title: 'Pengenalan bahasa pemrograman R: untuk non-programmer'
 author: "Dasapta Erwin Irawan dan Prana Ugi"
 date: "Jan 19, 2016"
-fontsize: 12pt
 output:
   pdf_document:
+    fig_caption: yes
+    fig_height: 6
+    fig_width: 7
     number_sections: yes
-    toc: yes
-  html_document:
     toc: yes
 ---
 
@@ -137,7 +137,7 @@ Data adalah salah satu bagian sentral dari R, bagian yang lainnya adalah kode da
 - output: berupa tabel dan plot
 
 
-![Komponen input dan output dalam R](~/Documents/2016/Github/Rforbeginners/tab-fig/inputOutputR.png)
+![Komponen input dan output dalam R](/Users/dasaptaerwinirawan/Documents/2016/Github/Rforbeginners/tab-fig/inputOutputR.png)
 
 Data adalah bahan baku R. Ia berperan sebagai input. Kalau anda mahasiswa pasti sering berhadapan dengan _spreadsheet_ maka itulah salah satu contoh data, dalam hal ini adalah data eksternal. Anda harus mengimpor data tersebut ke dalam format yang dapat dibaca oleh R. Pada bagian berikutnya akan kami perlihatkan cara untuk melakukan langkah tersebut.
 
@@ -149,9 +149,9 @@ R memiliki beberapa data yang terinstalasi secara _default_ di dalamnya. Ini dib
 
 Coba anda lihat jendela ```Global Environments``` kanan atas. Klik menu _dropdown_ (seperti pada gambar berikut), maka anda akan melihat banyak dataset yang terinstalasi dalam sistem R. Masing-masing dataset tersebut bersifat bebas pakai dan dapat digunakan dalam latihan R anda.
 
-![Menu dropdown ```Global Environment``` yang berisi dataset](~/Documents/2016/Github/Rforbeginners/tab-fig/listDataset1.png)
+![Menu dropdown ```Global Environment``` yang berisi dataset](/Users/dasaptaerwinirawan/Documents/2016/Github/Rforbeginners/tab-fig/listDataset1.png)
 
-![Daftar dataset yang terinstalasi dalam sistem R](~/Documents/2016/Github/Rforbeginners/tab-fig/listDataset2.png)
+![Daftar dataset yang terinstalasi dalam sistem R](/Users/dasaptaerwinirawan/Documents/2016/Github/Rforbeginners/tab-fig/listDataset2.png)
 
 Berikut ini adalah bagaimana cara melihat isi dataset. _Copy paste_ baris per baris perintah berikut ini setelah ```R>```di jendela ```console``` (kiri bawha) atau _copy paste_ seluruhnya di jendela ```Script``` (kiri atas) 
 
@@ -371,7 +371,7 @@ Simbol ```<-``` (tanpa spasi diantaranya) dan ```=``` mempunyai efek sama, tetap
 
 Sekarang kita coba lihat ada berapa obyek anda punya di memori R. Dengan perintah berikut, anda akan lihat bahwa di memori R sudah ada tiga obyek bernama: `x`, `y`, `z`. Coba lihat jendela ```Environment``` di kanan atas, atau ketik ```ls()```.
 
-![Tiga obyek di jendela ```Global Environment```](~/Documents/2016/Github/Rforbeginners/tab-fig/globalenv.png)
+![Tiga obyek di jendela ```Global Environment```](/Users/dasaptaerwinirawan/Documents/2016/Github/Rforbeginners/tab-fig/globalenv.png)
 
 
 ### Jenis obyek
@@ -609,7 +609,7 @@ Selanjutnya adalah `package`. Ia adalah sebuah kemasan yang berisi kumpulan atau
 
 Untuk melihat package baku, anda dapat melihat jendela `Environment` > klik `Global Environment` > pilih `packages: base`, atau ketik `library()`.
 
-![Daftar package baku](~/Documents/2016/Github/Rforbeginners/tab-fig/listPackages.png)
+![Daftar package baku](/Users/dasaptaerwinirawan/Documents/2016/Github/Rforbeginners/tab-fig/listPackages.png)
 
 Untuk menginstalasi package tambahan, teknik yang paling umum adalah menginstalasi langsung dari server CRAN dengan cara: `install.packages("nama package"). R akan secara otomatis memilih repositori CRAN dan menginstalasi package yang dimaksud. Untuk mengetahui berbagai package yang sesuai dengan kebutuhan analisis data, anda dapat mengakses situs [CRAN task views](https://cran.r-project.org/web/views/). Dari situs tersebut dapat beberapa kategori package, misal: Bayesian, Multivariate, dan Time series
 
@@ -618,9 +618,9 @@ Karena satu dan lain hal, terkadang instalasi dengan cara di atas tidak dapat di
 + dari situs Github. Para pengembangan package umumnya akan menyimpan kode pemrogramannya di repositori [Github](www.github.com). Namun anda perlu menginstalasi package `devtools` terlebih dahulu. Pertama untuk instalasi package `devtools` ketik `install.packages("devtools")`, `library(devtools)`, kemudian instalasi dari Github dapat dilakukan dengan mengetik `install_github("username/packagename")`. 
 
 
-![Instalasi package dari archive](~/Documents/2016/Github/Rforbeginners/tab-fig/installPackage1.png)
+![Instalasi package dari archive](/Users/dasaptaerwinirawan/Documents/2016/Github/Rforbeginners/tab-fig/installPackage1.png)
 
-![Instalasi package dari archive](~/Documents/2016/Github/Rforbeginners/tab-fig/installPackage2.png)
+![Instalasi package dari archive](/Users/dasaptaerwinirawan/Documents/2016/Github/Rforbeginners/tab-fig/installPackage2.png)
 
 
 ## Syntax perintah dalam R
