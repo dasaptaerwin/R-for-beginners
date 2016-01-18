@@ -1,0 +1,65 @@
+---
+title: "Pengenalan bahasa pemrograman R: untuk non-programmer"
+author: "Dasapta Erwin Irawan dan Prana Ugi"
+date: "August 23, 2015"
+output:
+  pdf_document:
+    toc: true
+    number_sections: true
+    fig_width: 7
+    fig_height: 6
+    fig_caption: true
+    highlight: "pygments"
+---
+
+
+# _Function_, _arguments_ dan _packages_
+
+Sekarang kita coba mengenal fungsi (function) dan package. Fungsi adalah kumpulan perintah yang sifatnya iteratif dan dapat diulang. Sedangkan argumen (_arguments_) adalah spesifikasi rinci dari fungsi sesuai dengan kebutuhan kita. Dari bab sebelumnya anda sebenarnya telah mengenal fungsi.
+
+Bila anda mengetik `head(nama dataframe)`, maka `head` adalah fungsi. Dalam bab-bab berikutnya anda akan berlatih menggunakan banyak fungsi lainnya.
+
+Kemudian bila anda memerintahkan R untuk membuka suatu file (misal bernama `data.csv`), maka perintahnya adalah `read.csv(data.csv, header=TRUE)`. Dalam proses tersebut, maka anda menggunakan fungsi `read.csv` dan argumen `header=TRUE` untuk meminta R membaca judul kolom (_header_).
+
+Sudah jelas ya antara fungsi dan argumen? Bila masih bingung, jangan khawatir, anda akan makin paham sejalan dengan anda terus berlatih. Bilamana anda bingung bagaimana cara menggunakan fungsi tertentu, R menyediakan file bantuan (_help file_) yang dapat muncul di jendelan `Viewer` (kanan bawah) bila anda mengetik `?nama fungsi`, misal: `?read.csv`. Anda dapat membaca file bantuan tersebut yang formatnya telah dibakukan, yaitu diawali dengan pendahuluan, syntax (cara penulis), daftar argumen, dan contoh.
+
+Selanjutnya adalah `package`. Ia adalah sebuah kemasan yang berisi kumpulan atau kompilasi dari berbagai fungsi sejenis atau data. Karena R adalah aplikasi _open source_, maka pengembangannya berbasis komunitas. Package yang semula dikembangkan oleh individu pengguna R suatu saat akan dimasukkan sebagai package baku (_Base package_) dalam instalasi R. Per hari ini (18 Januari 2016), server R yang bernama [CRAN](http://cran.r-project.org) telah menyipan sebanyak 7791 package dalam berbagai jenis dan kategori.
+
+Untuk melihat package baku, anda dapat melihat jendela `Environment` > klik `Global Environment` > pilih `packages: base`, atau ketik `library()`.
+
+![Daftar package baku](~/Documents/2016/Github/Rforbeginners/tab-fig/listPackages.png)
+
+Untuk menginstalasi package tambahan, teknik yang paling umum adalah menginstalasi langsung dari server CRAN dengan cara: `install.packages("nama package"). R akan secara otomatis memilih repositori CRAN dan menginstalasi package yang dimaksud. Untuk mengetahui berbagai package yang sesuai dengan kebutuhan analisis data, anda dapat mengakses situs [CRAN task views](https://cran.r-project.org/web/views/). Dari situs tersebut dapat beberapa kategori package, misal: Bayesian, Multivariate, dan Time series
+
+Karena satu dan lain hal, terkadang instalasi dengan cara di atas tidak dapat dilakukan, biasanya karena perbedaan versi R. Untuk itu anda dapat mencoba menginstalasi:
++ dari zip file. Anda perlu mengundung zip file package-nya terlebih dahulu sebelum menginstalasinya dengan menggunakan perintah `install.packages.zip(/dir/nama package)` atau gunakan menu Tools > install packages > pilih install from package archives, seperti pada gambar berikut.
++ dari situs Github. Para pengembangan package umumnya akan menyimpan kode pemrogramannya di repositori [Github](www.github.com). Namun anda perlu menginstalasi package `devtools` terlebih dahulu. Pertama untuk instalasi package `devtools` ketik `install.packages("devtools")`, `library(devtools)`, kemudian instalasi dari Github dapat dilakukan dengan mengetik `install_github("username/packagename")`. 
+
+
+![Instalasi package dari archive](~/Documents/2016/Github/Rforbeginners/tab-fig/installPackage1.png)
+
+![Instalasi package dari archive](~/Documents/2016/Github/Rforbeginners/tab-fig/installPackage2.png)
+
+
+# Syntax perintah dalam R
+
+Seperti halnya bahasa pemrograman lainnya, anda harus mengetahui bagaimana cara memerintahkan R melalui fungsi dan argumen. Cara penulisannya (syntax) adalah: `obyek <- fungsi(argumen1, argumen2, ... )`. Coba anda ingat lagi bagaimana cara:
++ mengimpor file data (`read.csv(xxxx)`)
++ melihat isi data (`View(xxxx)`)
+
+maka formatnya akan sama.
+
+Dalam hal argumen yang banyak dan panjang, anda dibolehkan memenggalnya seperti contoh berikut ini.
+
+`obyek <- fungsi(argumen 1,
+                argumen 2,
+                argumen 3)`
+                
+Dengan cara ini maka kita dapat dengan mudah melihat bagian argumen yang salah.
+
+# References
+
++ [R Studio packages](https://www.rstudio.com/products/rpackages/)
++ [CRAN task views](https://cran.r-project.org/web/views/)
++ [Tutorial Git and Github](http://r-pkgs.had.co.nz/git.html)
+
