@@ -1,0 +1,55 @@
+---
+title: "Pengenalan bahasa pemrograman R: untuk non-programmer"
+author: "Dasapta Erwin Irawan dan Prana Ugi"
+date: "August 23, 2015"
+output:
+  pdf_document:
+    toc: true
+    number_sections: true
+    fig_width: 7
+    fig_height: 6
+    fig_caption: true
+    highlight: "pygments"
+---
+
+
+# Manipulasi data dengan R 
+
+## Mengetahui struktur data
+
+Mari kita mulai mencoba memanipulasi data dengan R. Bila anda tidak memiliki contoh data sendiri, kita coba dengan contoh data berikut ini, `Data1-WaterTemp.csv`. Data ini merupakan kumpulan data suhu air dari 20 lokasi. 
+
+1. Unduh data dari http://dasaptaerwin.net/wp/wp-content/uploads/2016/01/Data1-WaterTemp.csv.
+2. Pindahkan file ke direktori kerja
+3. Kemudian ketik atau _copy paste_ beberapa perintah berikut ini.
+
+```
+data <- read.csv("Data1-WaterTemp.csv") # import data ke dalam R
+data # melihat isi data atau anda bisa membuka file dari jendela _Global Environment_.
+str(data) # untuk melihat struktur data (terlihat sebagai `int` atau `integer`)
+dim(data) # untuk melihat dimensi data (jumlah kolom x jumlah baris) ada 20 baris atau sampel dan 2 kolom.
+summary(data) # untuk melihat ringkasan data secara statistik
+```
+
+Anda dapat melihat bahwa `data` merupakan data frame yang terdiri dari 20 baris (atau sampel) dan 2 kolom. Seluruh data berjenis `int` atau integer.
+
+## Sortasi data
+
+Salah satu proses yang diperlukan dalam manipulasi data adalah sortasi. Mari kita coba dengan data frame `data`. Ketik beberapa perintah berikut ini.
+
+
+
+
+
+
+
+
+
+
+# References
+
++ Rutgers https://docs.google.com/viewer?url=https%3A%2F%2Fwww.rci.rutgers.edu%2F~rwomack%2FIASSIST%2FCode%2FDataManipulationR.pdf
++ Cook book R http://www.cookbook-r.com/Manipulating_data/Sorting/
++ http://science.nature.nps.gov/im/datamgmt/statistics/r/fundamentals/manipulation.cfm
++ http://www.sr.bham.ac.uk/~ajrs/R/r-manipulate_data.html
+
