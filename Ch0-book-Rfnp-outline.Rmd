@@ -20,7 +20,8 @@ Menjelaskan sekilas mengenai R.
 Menjelaskan sekilas tentang awal pembuatan R dan perkembangannya.
 
 ## Mengapa R
-Mengapa banyak saintis menggunakan R? Dapat dibaca di bab ini.
+Mengapa banyak saintis menggunakan R? Dapat dibaca di bab ini beberapa karakter R yang gratis, open source dan cross platfotm (Linux, Mac, Windows); bagaimana R mendukung prinsip _reproducibility_ dan dapat menghasilkan output grafis yang cantik dan dapat dikustomisasi sesuai keperluan.
+
 ### R gratis, _open source_, dan _cross platform_
 ### R mendukung prinsip _reproducibility_
 ### R menghasilkan visualisasi yang berkualitas tinggi 
@@ -34,10 +35,30 @@ Bab ini menjelaskan secara singkat bagaimana menginstalasi R di PC atau laptop a
 ## Menggunakan buku ini
 Bab ini menjelaskan bagaimana sebaiknya anda menggunakan buku ini sebagai panduan.
 
-# BAB 2
+# BAB 2 PREPARASI DAN MANIPULASI DATA DALAM R
+
+Data adalah salah satu bagian sentral dari R, bagian yang lainnya adalah kode dan output. Oleh karenanya kami menempatkan bagaimana menyiapkan dan memanipulasi data di bab kedua. Dalam diagram berikut ini dapat anda lihat bahwa mekanisme kerja dalam R adalah: 
+
+- input: berupa data
+- proses: berupa kumpulan kode perintah
+- output: berupa tabel dan plot
 
 
-# BAB 3
+# BAB 3 BAHASA R
+
+Anda harus memahami bahasa R sebelum dapat membuat perintah kode dalam R. Bahasa R menurut kami sangat mudah dipahami karena sudah dikemas di dalam berbagai fungsi siap pakai. Anda tinggal menggunakannya dengan berbagai argumen yang diperlukan sesuai kebutuhan. 
+
+Bab ini akan membahas bagaimana anda memanfaatkan fungsi dan argumen untuk membantu anda menganalisis data. Dasar-dasar format (syntax) kode perintah dalam R akan disampaikan dengan beberapa contoh aplikatif.
+
+Fungsi (_fungctions_)
+
+
+
+Argumen (_arguments_)
+
+
+
+
 
 
 # BAB 4
