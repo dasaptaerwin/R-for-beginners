@@ -407,6 +407,7 @@ df
 
 Anda akan melihat bahwa data frame "iris" terdiri dari lima variabel (dalam kolom) dan 150 observasi (dalam baris). Data frame "mtcars" terdiri dari 11 variabel dan 32 observasi. Tipe obyek data frame akan sering kita pakai dalam R.
 
+<<<<<<< HEAD
 # Mengatur direktori kerja
 
 Seperti halnya piranti lunak yang lain, R perlu mengetahui di direktori manakah kita akan bekerja. Untuk mengaturnya bisa menggunakan perintah baris atau menggunakan menu di menu bar.
@@ -426,6 +427,8 @@ Untuk mengetahui posisi direktori terakhir, gunakan perintah:
 `getwd()`
 
 ![Setting direktori kerja menggunakan menu bar](~/Documents/2016/Github/Rforbeginners/tab-fig/setFolder.png)
+=======
+>>>>>>> a5e09cf56e475053113d6447cfc0dc948b547673
 
 # Mengimpor data ke dalam R
 
