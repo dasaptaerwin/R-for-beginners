@@ -31,25 +31,229 @@ dim(data) # untuk melihat dimensi data (jumlah kolom x jumlah baris) ada 20 bari
 summary(data) # untuk melihat ringkasan data secara statistik
 ```
 
-Anda dapat melihat bahwa `data` merupakan data frame yang terdiri dari 20 baris (atau sampel) dan 2 kolom. Seluruh data berjenis `int` atau integer.
+Anda dapat melihat bahwa `data` merupakan data frame yang terdiri dari 20 baris (atau sampel) dan 2 kolom. Seluruh data berjenis `int` atau integer. Kita akan mencoba memanipulasi data frame tersebut dengan R. Sebenarnya ada beberapa fungsi dasar untuk melakukan sortasi, transpose, dll, tapi syntax dan penggunaannya memerlukan baris perintah yang cukup panjang. Karena R sangat mudah untuk dikembangkan, maka kali ini kita akan menggunakan package `dplyr` yang dibuat oleh tim R Studio, Hadley Wickham. Dengan package ini mengolah data dapat dilakukan dengan syntax yang lebih mudah dipahami dan diingat. 
 
-## Sortasi data
+Baris-baris perintah di bawah ini menggunakan dataset internal yang tersedia dalam package `dplyr`. Awali dengan menginstalasi `dplyr`. Sudah tahu bagaimana caranya bukan.
 
-Salah satu proses yang diperlukan dalam manipulasi data adalah sortasi. Mari kita coba dengan data frame `data`. Ketik beberapa perintah berikut ini.
+## dplyr package
+
+Package `dplyr` adalah package yang diperlukan untuk melakukan manipulasi data frame. Kelebihan `dplyr`:
+
+- Fungsional untuk eksplorasi dan transformasi data: khusus dibuat untuk memenuhi kebutuhan analisis data berukuran besar (_big data_)
+- Fungsi yang intuitif dan mudah dimengerti: fungsi-fungsi terkait dinamai mirip dengan kata kerja dalam bahasa sehari-hari (_daily English_).
+- Cepat: ini baru terasa bila dataset kita berjumlah ribuan baris dan kolom.
+
+Ada lima fungsi dasar dalam package ini:
+
+- `filter()`: untuk memfilter baris (row) dari data frame berdasarkan beberapa kriteria yang anda miliki.
+- `select()`: untuk memilih satu atau dua kolom (column) yang anda perlukan.
+- `arrange()`: untuk menyortir (sorting), yaitu untuk mengurutkan baris berdasarkan nilai dari satu atau lebih kolom secara ascending atau descending.
+- `mutate()`: untuk menambah kolom baru yang merupakan hasil transformasi dari kolom yang lain.
+- `summarise()`: untuk memperlihatkan informasi dasar dari suatu data frame, misal: rata-rata (mean), standar deviasi (SD), dll. Fungsi ini sering digabung dengan fungsi `group()`.
+
+Bagi yang belum menginstalasi package ini, silahkan melakukan instalasi dengan perintah berikut ini:
+
+`install.packages("dplyr")`
+
+## Start
+
+Mulailah dengan memuat library package `dplyr` dan data frame `hflights`. Data `hflights` adalah contoh data yang diambil dari data penerbangan dari dua bandara di Houston US pada tahun 2011.
+
+```
+# load packages
+library(dplyr)
+library(hflights)
+
+# explore data
+data(hflights)
+head(hflights)
+
+Tampilan sedikit agak kacau bukan. Kita bisa mengakalinya dengan membuat “local data frame” bernama “flights” agar tampilan bisa kita atur. Ketik perintah di bawah ini dan bandingkan tampilannya dengan sebelumnya.
+
+# convert to local data frame
+flights <- tbl_df(hflights)
+
+# printing only shows 10 rows and as many columns as can fit on your screen
+flights
+
+Kalau masih kurang memuaskan, anda bisa mengatur berapa jumlah baris yang mau anda lihat (misalkan 20 baris) dengan perintah berikut.
+
+# you can specify that you want to see more rows
+print(flights, n=20)
+
+# convert to a normal data frame to see all of the columns
+data.frame(head(flights))
+```
+
+## `filter()`
+
+Fungsi `filter()` adalah untuk memilih baris atau mengelompokkan baris berdasarkan kriteria yang anda miliki. Fungsi ini sebenarnya telah tersedia dalam R secara default, namun package `dplyr` membuatnya lebih mudah. Sekarang kita bandingkan kedua fungsi Filter() tersebut. Perintah berikut ini melakukan filter kolom `Month` (“AND”) kolom `DayofMonth` yang nilainya sama dengan 1.
+
+```
+# melihat semua penerbangan di tanggal 1 Januari menggunakan fungsi dasar R untuk 
+
+flights[flights$Month==1 & flights$DayofMonth==1, ]
+
+# melihat semua penerbangan di tanggal 1 Januari menggunakan dplyr
+# anda dapat menggunakan "," atau "&", hasilnya akan sama
+filter(flights, Month==1, DayofMonth==1)
+filter(flights, Month==1 & DayofMonth==1)
+```
+
+Anda bisa lihat bahwa dengan `dplyr` kita cukup mengetik nama kolomnya saja (misal "namaPenerbangan"), bukan `data.frame$namakolom` (misal: "data$namaPenerbangan").
+
+Anda bisa menggunakan operator “ATAU” (“OR”), misalkan anda hanya ingin melihat data penerbangan dari perusahaan (kolom UniqueCarrier) “AA” atau “UA”.
+
+```
+# use pipe for OR condition
+filter(flights, UniqueCarrier=="AA" | UniqueCarrier=="UA")
+
+#atau menggunakan operator `%in%` 
+filter(flights, UniqueCarrier %in% c("AA", "UA"))
+```
+
+## `select()`
+
+Fungsi ini juga ada dalam daftar fungsi dasar R. Coba kita bandingkan dengan perintah dalam dply. Perintah dibawah ini untuk memilih kolom “DepTime”, “ArrTime”, dan “FlightNum”. Ketiga kolom tersebut tidak menerus.
+
+```
+# memilih (select) kolom DepTime, ArrTime, and FlightNum columns dengan fungsi dasar R
+flights[, c("DepTime", "ArrTime", "FlightNum")]
+
+# bila menggunakan dplyr
+select(flights, DepTime, ArrTime, FlightNum)
+```
+
+Sekarang bagaimana bila kolom yang akan anda pilih, menerus. Gunakan “:”. Dalam perintah berikut ini, kita ingin melihat kolom “Year” hingga “DayofMonth” dan kolom-kolom lain yang mengandung kata-kata “Taxi” dan “Delay”.
+
+```
+# gunakan simbol colon ":" untuk memilih beberapa kolom yang menerus (bersebelahan) dan gunakan `contains` untuk menyeleksi kolom dengan kriteria tertentu 
+# anda dapat menggunakan `starts_with`, `ends_with`, dan `matches` untuk menyeleksi nama kolom
+select(flights, Year:DayofMonth, contains("Taxi"), contains("Delay"))
+```
+
+## `arrange()`
+
+Fungsi ini membantu anda untuk memilih beberapa kolom dan mengurutkan (sorting) set kolom tersebut berdasarkan kolom tertentu. Kali ini kita akan memilih kolom “UniquesCarrier” dan “DepDelay” dan menyortirnya berdasarkan kolom “DepDelay” secara ascending atau dari nilai kecil ke besar.
+
+Urutan kode dengan fungsi dasar R adalah sebagai berikut, yang akan kita bandingkan bila dengan fungsi package `dplyr`: 
+
++ pilih data.frame = “flights” 
++ pilih kolom kriteria = “flights$DepDelay” 
++ pilih kolom set yang akan anda urutkan (sortir) secara ascending = “UniqueCarrier” dan “DepDelay”
 
 
+```
+# base R approach to select UniqueCarrier and DepDelay columns and sort by DepDelay
+flights[order(flights$DepDelay), c("UniqueCarrier", "DepDelay")]
+
+# Dengan urutan yang sama kita pakai teknik dplyr
+flights %>%
+    select(UniqueCarrier, DepDelay) %>%
+    arrange(DepDelay)
+
+# Kalau anda ingin menyortir mengecil ke bawah (secara _descending_), gunakan operator “desc”.
+flights %>%
+    select(UniqueCarrier, DepDelay) %>%
+    arrange(desc(DepDelay))
+```
+
+## `mutate()`
+
+Dengan fungsi ini anda bisa membuat kolom baru (new column or new variable) berdasarkan suatu fungsi. Bila anda menggunakan fungsi default R, maka urutan kodenya adalah:
+
+- buat data.frame baru = “flights$Speed”
+- buat fungsi persamaannya = “flightsDistance/flightsDistance/flightsAirTime*60"
+- lihat hasilnya
 
 
+```
+# Bila menggunakan fungsi dasar R, membuat variabel bar "Speed" (in mph)
+flights$Speed <- flights$Distance / flights$AirTime*60
+flights[, c("Distance", "AirTime", "Speed")]
+```
+
+Bila anda menggunakan dplyr:
+
+- pilih data.frame = “flights”
+- pilih kolom variabel yang diperlukan = “Distance dan AirTime”
+- buat fungsi persamaannya = “Speed = Distance / AirTime*60“ yang hasilnya disimpan sebagai variabel yang baru
 
 
+```
+# menggunakan dplyr 
+flights %>%
+    select(Distance, AirTime) %>%
+    mutate(Speed = Distance/AirTime*60)
+    
+# atau anda bisa mempersingkatnya menjadi:
+flights <- flights %>% mutate(Speed = Distance/AirTime*60)
+```
+
+## `summarise()`
+
+Fungsi ini untuk melihat ringkasan (summary) dari suatu kolom (variabel) atau grup kolom (group of variables). Sebagai contoh, jika anda ingin menghitung rata-rata delay kedatangan (arrival delay) untuk tiap tujuan (destination), maka alurnya sbb jika menggunakan fungsi default R:
+
+- pilih data.frame = “flights”
+- `tapply` kolom yang diperlukan = “ArrDelay” dan “Dest”
+- fungsi yang diperlukan = “mean” dan abaikan baris NA = “na.rm=TRUE” atau gunakan “aggregate”.
 
 
+```
+# menggunakan fyngsi dasar 
+head(with(flights, tapply(ArrDelay, Dest, mean, na.rm=TRUE)))
+
+# atau gunakan or you can use "aggregate"
+head(aggregate(ArrDelay ~ Dest, flights, mean))
+```
+
+Alur dengan dplyr: 
+- pilih data.frame = “flights” 
+- group_by kolom = “Dest” + summarise dengan menghitung “mean” dari kolom “ArrDelay”, abaikan baris NA = “na.rm=TRUE” 
+- simpan hasil dalam kolom “avg_delay”
+
+```
+# menggunakan dplyr: buat table digrup berdasarkan "Dest" kemudian then `summarise` each group dengan menghitung rata-rata (mean) "ArrDelay"
+flights %>%
+    group_by(Dest) %>%
+    summarise(avg_delay = mean(ArrDelay, na.rm=TRUE))
+```
+
+Anda juga bisa menggunakan fungsi `summarise_each()` untuk lebih dari satu kolom. Hal yang sama untuk fungsi mutate_each().
+
+Alurnya sebagai berikut:
+
+- pilih data.frame = “flights”
+- group_by = “UniqueCarrier”
+- lakukan summarise_each untuk menghitung “mean” terhadap persentase penerbangan yang “Cancelled” dan “Diverted”
+
+```
+# untuk setiap "carrier", hitung persentase penerbangan yang dibatalkan (cancelled) atau diubah rutenya (diverted)
+flights %>%
+    group_by(UniqueCarrier) %>%
+    summarise_each(funs(mean), Cancelled, Diverted)
+```
+
+Contoh lain anda ingin mengetahui nilai min dan max untuk kolom-kolom dengan kata-kata “Delay” untuk tiap perusahaan penerbangan dalam kolom “UniqueCarrier”. Alurnya sbb:
+
+- pilih data.frame = “flights”
+- group_by = “UniqueCarrier”
+- lakukan summarise_each() untuk melihat “min” dan “max” pada kolom yang mengandung kata “Delay”
+
+```
+# untuk tiap penerbangan, hitung minimum dan maksimum delay untuk kedatangan dan keberangkatan
+flights %>%
+    group_by(UniqueCarrier) %>%
+    summarise_each(funs(min(., na.rm=TRUE), max(., na.rm=TRUE)), matches("Delay"))
+```
 
 
-# References
+# Tautan terkait
 
 + Rutgers https://docs.google.com/viewer?url=https%3A%2F%2Fwww.rci.rutgers.edu%2F~rwomack%2FIASSIST%2FCode%2FDataManipulationR.pdf
 + Cook book R http://www.cookbook-r.com/Manipulating_data/Sorting/
 + http://science.nature.nps.gov/im/datamgmt/statistics/r/fundamentals/manipulation.cfm
 + http://www.sr.bham.ac.uk/~ajrs/R/r-manipulate_data.html
-
++ [Video: Hands-on dplyr tutorial for faster data manipulation in R, by: Kevin Markham (@justmarkham)](https://www.youtube.com/watch?v=jWjqLW-u3hc)
++ [R code: Hands-on dplyr tutorial for faster data manipulation in R, by: Kevin Markham (@justmarkham)](http://rpubs.com/justmarkham/dplyr-tutorial)
++ [Blog: Dataschool.io, by: Kevin Markham (@justmarkham)](http://www.dataschool.io/dplyr-tutorial-for-faster-data-manipulation-in-r/)
