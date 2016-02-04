@@ -247,6 +247,38 @@ flights %>%
     summarise_each(funs(min(., na.rm=TRUE), max(., na.rm=TRUE)), matches("Delay"))
 ```
 
+## Reshaping (wide v. long)
+
+Often, especially with split-plot designs or measurements repeated in time, data are written as a row for each subject, and repeated measures (or within-subject factors) as columns. This is the "wide" format, and contains all of the information in a logical layout.
+
+Most statistical functions require data in the "long" format: one measurement per row, thus multiple rows per subject, and additional columns to indicate which date or within-subject factor the measurement is from.
+
+This simple reshaping of a data object is common enough that R includes the stack() function to go from wide to long and unstack() to go from long to wide for perfectly rectangular data, the reshape() function for more complex transposition, and melt() and recast() in the reshape package for very complex situations.
+
+### stack() and unstack()
+
+Note that all columns in the wide version must be of the same length, or each block of values in the long version must be of the same length.
+
+```
+long <- stack(wide)
+wide2 <- unstack(long)
+```
+
+### reshape()
+
+If you are a SAS user, reshape() is the rough equivalent of PROC TRANSPOSE. It is more flexible and powerful than stack() stack(), but is a bit more complicated in syntax (use ?reshape to view the documentation).
+
+```
+reshape(data=df, direction =c("long","wide"),ids="name",varying=c("v1","v2","v3"))
+```
+
+direction can be "long" or "wide". id names the id variable identifying separate subjects; varying lists the columns in the wide format that become separate rows in the long format. There are several other parameters that specify other behavior. One example that isn't in the documentation is what to do when you have more than 1 id variable:
+
+```
+f <- data.frame(C1, C2, V1, V2, V3) # glue stuff into data frame
+long <- reshape (data=df, direction = "long", ids = paste(df$C1,df$C2,sep=""), varying = c("V1","V2","V3"), sep="")
+```
+
 
 # Tautan terkait
 
