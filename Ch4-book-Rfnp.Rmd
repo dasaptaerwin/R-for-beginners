@@ -243,23 +243,27 @@ Contoh lain anda ingin mengetahui nilai min dan max untuk kolom-kolom dengan kat
 ```
 # untuk tiap penerbangan, hitung minimum dan maksimum delay untuk kedatangan dan keberangkatan
 flights %>%
-    group_by(UniqueCarrier) %>%
+    group_by(UniqueCarrier) %>% 
     summarise_each(funs(min(., na.rm=TRUE), max(., na.rm=TRUE)), matches("Delay"))
 ```
 
-## Reshaping (wide v. long)
+## Mengubah format data (reshape)
 
-Often, especially with split-plot designs or measurements repeated in time, data are written as a row for each subject, and repeated measures (or within-subject factors) as columns. This is the "wide" format, and contains all of the information in a logical layout.
+Format yang dimaksud di sini adalah mengubah format data lebar (_wide_) data menjadi format data panjang (_long_) atau sebaliknya. Dalam bahasa sehari-hari, _reshape_ sama dengan _transpose_. Dalam R ini dilakukan dengan menggunakan perintah:
 
-Most statistical functions require data in the "long" format: one measurement per row, thus multiple rows per subject, and additional columns to indicate which date or within-subject factor the measurement is from.
+- jangan lupa diawali dengan `install.packages("reshape")` dan `library(reshape)`,
+- `melt()` dan `cast()`.
 
-This simple reshaping of a data object is common enough that R includes the stack() function to go from wide to long and unstack() to go from long to wide for perfectly rectangular data, the reshape() function for more complex transposition, and melt() and recast() in the reshape package for very complex situations.
+Si Pembuat, Hadley Wickham menggunakan prinsip melelehkan ("melt") data frame untuk kemudian dicetak ("cast") dengan bentuk data frame sesuai keinginan kita. Data "dilelehkan" untuk membuat kombinasi id-variabel yang unik untuk setiap barisnya. 
+
+
 
 ### stack() and unstack()
 
 Note that all columns in the wide version must be of the same length, or each block of values in the long version must be of the same length.
 
 ```
+# kita coba buat 
 long <- stack(wide)
 wide2 <- unstack(long)
 ```
