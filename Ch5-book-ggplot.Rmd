@@ -154,11 +154,11 @@ dotchart(mtcars$mpg,
          main="Konsumsi BBM berbagai merk mobil",          xlab="Miles Per Gallon")
 
 mtcars
-# Dotplot: Grouped Sorted and Colored
-## Sort by mpg, group and color by cylinder
-x <- mtcars[order(mtcars$mpg),] # sort by mpg
-x$cyl <- factor(x$cyl) # it must be a factor
-x$color[x$cyl==4] <- "red"
+# Dotplot: dengan pengelompokkan
+## Sortasi berdasarkan mpg, pengelompokkan dan pewarnaan berdasarkan cylinder
+x <- mtcars[order(mtcars$mpg),] # sortasi mpg
+x$cyl <- factor(x$cyl) # harus dikonversi menjadi tipe factor sebagai dasar klasifikasi
+x$color[x$cyl==4] <- "red" # pengelompokkan warna
 x$color[x$cyl==6] <- "blue"
 x$color[x$cyl==8] <- "darkgreen"
 dotchart(x$mpg,
@@ -171,9 +171,10 @@ dotchart(x$mpg,
 ```
 
 
-Bar Plots
+## Bar Plots
 
-Create barplots with the barplot(height) function, where height is a vector or matrix. If height is a vector, the values determine the heights of the bars in the plot. If height is a matrix and the option beside=FALSE then each bar of the plot corresponds to a column of height, with the values in the column giving the heights of stacked “sub-bars”. If height is a matrix and beside=TRUE, then the values in each column are juxtaposed rather than stacked. Include option names.arg=(character vector) to label the bars. The option horiz=TRUE to createa a horizontal barplot.
+Membuat "barplots" dengan fungsi `barplot(height)`, dengan `height` berjenis vektor atau matriks. Bila `height` adalah vektor, maka nilainya akan menentukan tinggi balok (bar) dalam plot. Bila ia berjenis matriks dan bila digunakan opsi `beside=FALSE` maka tiap balok akan m ....
+then each bar of the plot corresponds to a column of height, with the values in the column giving the heights of stacked “sub-bars”. If height is a matrix and beside=TRUE, then the values in each column are juxtaposed rather than stacked. Include option names.arg=(character vector) to label the bars. The option horiz=TRUE to createa a horizontal barplot.
 
 ```
 # Simple Bar Plot
