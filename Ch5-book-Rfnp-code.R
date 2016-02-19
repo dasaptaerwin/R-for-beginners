@@ -93,52 +93,29 @@ dotchart(mtcars$mpg,
          cex=.7,
          main="Konsumsi BBM berbagai merk mobil",          xlab="Miles Per Gallon")
 
-# Dotplot: dengan pengelompokkan
-## Sortasi berdasarkan mpg, pengelompokkan dan pewarnaan berdasarkan cylinder
-x <- mtcars[order(mtcars$mpg),] # sortasi mpg
-x$cyl <- factor(x$cyl) # harus dikonversi menjadi tipe factor sebagai dasar klasifikasi
-x$color[x$cyl==4] <- "red" # pengelompokkan warna
-x$color[x$cyl==6] <- "blue"
-x$color[x$cyl==8] <- "darkgreen"
-dotchart(x$mpg,
-         labels=row.names(x),
-         cex=.7,groups= x$cyl,
-         main="Konsumsi BBM berdasarkan merk mobil (berdasarkan jumlah silinder)",
-         xlab="mil per galon", 
-         gcolor="black", 
-         color=x$color) 
-```
-
 ## Bar Plots
-# Simple Bar Plot
+# Bar Plot vertikal (default) sederhana
 counts <- table(mtcars$gear)
 barplot(counts, main="Car Distribution",
         xlab="Number of Gears")
 
-# Simple Horizontal Bar Plot with Added Labels
+# Bar plot horisontal sederhana
 counts <- table(mtcars$gear)
 barplot(counts, main="Car Distribution", horiz=TRUE,
         names.arg=c("3 Gears", "4 Gears", "5 Gears"))
 
-# Stacked Bar Plot with Colors and Legend
+# Bar plot bersusun dengan warna dan legenda 
 counts <- table(mtcars$vs, mtcars$gear)
 barplot(counts, main="Car Distribution by Gears and VS",
         xlab="Number of Gears", col=c("darkblue","red"),
         legend = rownames(counts))
 
-# Grouped Bar Plot
+# Bar plot dengan pengelompokkan 
 counts <- table(mtcars$vs, mtcars$gear)
 barplot(counts, main="Car Distribution by Gears and VS",
         xlab="Number of Gears", col=c("darkblue","red"),
         legend = rownames(counts), beside=TRUE)
 
-# Fitting Labels
-par(las=2) # make label text perpendicular to axis
-par(mar=c(5,8,4,2)) # increase y-axis margin.
-
-counts <- table(mtcars$gear)
-barplot(counts, main="Car Distribution", horiz=TRUE, names.arg=c("3 Gears", "4 Gears", "5   Gears"), cex.names=0.8)
-```
 
 ## Line Charts
 
@@ -151,59 +128,12 @@ for(i in 1:length(opts)){
   plot(x, y, type="n", main=heading)
   lines(x, y, type=opts[i])
 }
-
 dev.off()
-
-
-x <- c(1:5); y <- x # create some data
-par(pch=22, col="blue") # plotting symbol and color
-par(mfrow=c(2,4)) # all plots on one page
-opts = c("p","l","o","b","c","s","S","h")
-for(i in 1:length(opts){
-  heading = paste("type=",opts[i])
-  plot(x, y, main=heading)
-  lines(x, y, type=opts[i])
-}
-
-
-# Create Line Chart
-
-# convert factor to numeric for convenience
-Orange$Tree <- as.numeric(Orange$Tree)
-ntrees <- max(Orange$Tree)
-
-# get the range for the x and y axis
-xrange <- range(Orange$age)
-yrange <- range(Orange$circumference)
-
-# set up the plot
-plot(xrange, yrange, type="n", xlab="Age (days)",
-ylab="Circumference (mm)" )
-colors <- rainbow(ntrees)
-linetype <- c(1:ntrees)
-plotchar <- seq(18,18+ntrees,1)
-
-# add lines
-for (i in 1:ntrees) {
-tree <- subset(Orange, Tree==i)
-lines(tree$age, tree$circumference, type="b", lwd=1.5,
-lty=linetype[i], col=colors[i], pch=plotchar[i])
-}
-
-# add a title and subtitle
-title("Tree Growth", "example of line plot")
-
-# add a legend
-legend(xrange[1], yrange[2], 1:ntrees, cex=0.8, col=colors,
-pch=plotchar, lty=linetype, title="Tree")
-
 
 # Simple Pie Chart
 slices <- c(10, 12,4, 16, 8)
 lbls <- c("US", "UK", "Australia", "Germany", "France")
 pie(slices, labels = lbls, main="Pie Chart of Countries")
-
-
 
 # Pie Chart with Percentages
 slices <- c(10, 12, 4, 16, 8)
@@ -214,22 +144,6 @@ lbls <- paste(lbls,"%",sep="") # ad % to labels
 pie(slices,labels = lbls, col=rainbow(length(lbls)),
 main="Pie Chart of Countries")
 
-
-# 3D Exploded Pie Chart
-library(plotrix)
-slices <- c(10, 12, 4, 16, 8)
-lbls <- c("US", "UK", "Australia", "Germany", "France")
-pie3D(slices,labels=lbls,explode=0.1,
-main="Pie Chart of Countries ")
-
-3D pie chart click to view
-Creating Annotated Pies from a data frame
-
-# Pie Chart from data frame with Appended Sample Sizes
-mytable <- table(iris$Species)
-lbls <- paste(names(mytable), "\n", mytable, sep="")
-pie(mytable, labels = lbls,
-main="Pie Chart of Species\n (with sample sizes)")
 
 
 
@@ -258,100 +172,51 @@ plot(wt, mpg, main="Scatterplot Example",
 abline(lm(mpg~wt), col="red") # regression line (y~x)
 lines(lowess(wt,mpg), col="blue") # lowess line (x,y)
 
-
-# Enhanced Scatterplot of MPG vs. Weight
-# by Number of Car Cylinders
-library(car)
-scatterplot(mpg ~ wt | cyl, data=mtcars,
-            xlab="Weight of Car", ylab="Miles Per Gallon",
-            main="Enhanced Scatter Plot",
-            labels=row.names(mtcars))
-
-enhanced scatterplot click to view
-Scatterplot Matrices
-
-There are at least 4 useful functions for creating scatterplot matrices. Analysts must love scatterplot matrices!
-  
-  # Basic Scatterplot Matrix
-  pairs(~mpg+disp+drat+wt,data=mtcars,
+# Scatterplot matrix sederhana
+pairs(~mpg+disp+drat+wt,data=mtcars,
         main="Simple Scatterplot Matrix")
 
-simple scatterplot matrix click to view
-
-The lattice package provides options to condition the scatterplot matrix on a factor.
 
 # Scatterplot Matrices from the lattice Package
 library(lattice)
-splom(mtcars[c(1,3,5,6)], groups=cyl, data=mtcars,
-      panel=panel.superpose,
-      key=list(title="Three Cylinder Options",
-               columns=3,
-               points=list(pch=super.sym$pch[1:3],
-                           col=super.sym$col[1:3]),
-               text=list(c("4 Cylinder","6 Cylinder","8 Cylinder"))))
+splom(mtcars[c(1,3,5,6)]) # scatterplot matrix using variable no 1, 3, 5, 6
 
-lattice scatterplot matrix click to view
-
-The car package can condition the scatterplot matrix on a factor, and optionally include lowess and linear best fit lines, and boxplot, densities, or histograms in the principal diagonal, as well as rug plots in the margins of the cells.
-
-# Scatterplot Matrices from the car Package
-library(car)
-scatterplot.matrix(~mpg+disp+drat+wt|cyl, data=mtcars,
-                   main="Three Cylinder Options")
-
-car scatterplot matrix click to view
-
-The gclus package provides options to rearrange the variables so that those with higher correlations are closer to the principal diagonal. It can also color code the cells to reflect the size of the correlations.
 
 # Scatterplot Matrices from the glus Package
+install.packages("gclus")
 library(gclus)
 dta <- mtcars[c(1,3,5,6)] # get data
 dta.r <- abs(cor(dta)) # get correlations
 dta.col <- dmat.color(dta.r) # get colors
+
 # reorder variables so those with highest correlation
 # are closest to the diagonal
 dta.o <- order.single(dta.r)
 cpairs(dta, dta.o, panel.colors=dta.col, gap=.5,
        main="Variables Ordered and Colored by Correlation" )
 
-gclus scatterplot matrix click to view
-High Density Scatterplots
-
-When there are many data points and significant overlap, scatterplots become less useful. There are several approaches that be used when this occurs. The hexbin(x, y) function in the hexbin package provides bivariate binning into hexagonal cells (it looks better than it sounds).
 
 # High Density Scatterplot with Binning
+install.packages("hexbin")
 library(hexbin)
-x <- rnorm(1000)
+x <- rnorm(1000) # membuat angka acak
 y <- rnorm(1000)
-bin<-hexbin(x, y, xbins=50)
+bin <- hexbin(x, y, xbins=50)
 plot(bin, main="Hexagonal Binning")
 
-hexagonal binning click to view
-
-Another option for a scatterplot with significant point overlap is the sunflowerplot. See help(sunflowerplot) for details.
-
-Finally, you can save the scatterplot in PDF format and use color transparency to allow points that overlap to show through (this idea comes from B.S. Everrit in HSAUR).
-
 # High Density Scatterplot with Color Transparency
-pdf("c:/scatterplot.pdf")
 x <- rnorm(1000)
 y <- rnorm(1000)
-plot(x,y, main="PDF Scatterplot Example", col=rgb(0,100,0,50,maxColorValue=255), pch=16)
-dev.off()
+plot(x,y, main="PDF Scatterplot Example", col=rgb(0, 100, 0, 50, 
+                                                  maxColorValue=255), pch=16)
+dev.off() # menghapus plot dari layar
 
-scatterplot with alpha transparency click to view
-
-Note: You can use the col2rgb( ) function to get the rbg values for R colors. For example, col2rgb("darkgreen") yeilds r=0, g=100, b=0. Then add the alpha transparency level as the 4th number in the color vector. A value of zero means fully transparent. See help(rgb) for more information.
-3D Scatterplots
-
-You can create a 3D scatterplot with the scatterplot3d package. Use the function scatterplot3d(x, y, z).
-
-# 3D Scatterplot
+# 3D Scatterplot menggunakan package scatterplot3d
+install.packages("scatterplot3d")
 library(scatterplot3d)
 attach(mtcars)
 scatterplot3d(wt,disp,mpg, main="3D Scatterplot")
 
-3D scatterplot click to view
 
 # 3D Scatterplot with Coloring and Vertical Drop Lines
 library(scatterplot3d)
@@ -359,10 +224,9 @@ attach(mtcars)
 scatterplot3d(wt,disp,mpg, pch=16, highlight.3d=TRUE,
               type="h", main="3D Scatterplot")
 
-3D scatterplot with drop lines click to view
-
 # 3D Scatterplot with Coloring and Vertical Lines
 # and Regression Plane
+dev.off()
 library(scatterplot3d)
 attach(mtcars)
 s3d <-scatterplot3d(wt,disp,mpg, pch=16, highlight.3d=TRUE,
@@ -370,31 +234,10 @@ s3d <-scatterplot3d(wt,disp,mpg, pch=16, highlight.3d=TRUE,
 fit <- lm(mpg ~ wt+disp)
 s3d$plane3d(fit)
 
-3D scatterplot with regression plane click to view
-Spinning 3D Scatterplots
-
-You can also create an interactive 3D scatterplot using the plot3D(x, y, z) function in the rgl package. It creates a spinning 3D scatterplot that can be rotated with the mouse. The first three arguments are the x, y, and z numeric vectors representing points. col= and size= control the color and size of the points respectively.
-
 # Spinning 3d Scatterplot
+install.packages("rgl")
 library(rgl)
-
 plot3d(wt, disp, mpg, col="red", size=3)
-
-3D scatterplot click to view
-
-You can perform a similar function with the scatter3d(x, y, z) in the Rcmdr package.
-
-# Another Spinning 3d Scatterplot
-library(Rcmdr)
-attach(mtcars)
-scatter3d(wt, disp, mpg)
-
-Rcmdr rotating 3d scatterplot click to view
-
-
-Copyright © 2014 Robert I. Kabacoff, Ph.D. | Sitemap
-Designed by WebTemplateOcean.com
-
 
 
 ## Multiple plot dalam satu halaman
