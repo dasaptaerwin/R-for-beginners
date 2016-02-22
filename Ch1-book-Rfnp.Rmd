@@ -1,5 +1,5 @@
 ---
-title: "Pengenalan bahasa pemrograman R: untuk non-programmer"
+title: "Bab 1 Pendahuluan"
 author: "Dasapta Erwin Irawan dan Prana Ugi"
 date: "August 23, 2015"
 output:
@@ -9,9 +9,7 @@ output:
 ---
 
 
-# BAB 1 PENDAHULUAN
-
-## Sekilas R
+# Sekilas R
 
 Beberapa tahun yang lalu, kalau anda melihat huruf "R", maka anda akan memikirkan alfabet ke-18. Tapi saat ini "R" juga bisa berarti bahasa pemrograman yang  trendi. R kini telah memiliki lebih dari 4000 paket tambahan (_add-on package_) atau biasa disebut _package_ saja, masing-masing _package_ tersebut umumnya memiliki _miling list_ dengan anggota ribuan, selain itu juga ada banyak sekali R group di media sosial seperti Google+, LinkedIn, dan Twitter. Situs [R-evolution](http://blog.revolutionanalytics.com/2013/05/how-r-grows.html) menampilkan jumlah package yang diunggah tiap tahun dan grafik para pengembang yang membuat lebih dari 10 package.   
 
@@ -21,7 +19,7 @@ R yang awalnya diperuntukkan untuk analisis statistik, saat ini telah berkembang
 
 Aplikasi R yang terus meluas didukung oleh berkembangnya bahasa pemrograman lainnya, seperti python, Ruby dll. Salah satu contohnya adalah R markdown. Bahasa _markup_ (_markup language_) yang lebih mudah dari LaTeX atau html sekalipun. Dengan menggunakan R markdown, saat ini anda bahwa bisa membuat _blogpost_ atau naskah buku dengan R, seperti halnya naskah yang sedang anda baca saat ini. Penjelasan lebih detail mengenai Markdown akan saya jelaskan dalam bagian yang lain.
 
-## Sejarah R
+# Sejarah R
 
 Menurut situs [R project](http://www.r-project.org/) R adalah bahasa dan lingkungan untuk komputasi statistik dan grafis. R adalah proyek berjenis _open source_ GNU, mirip dengan bahasa "S" yang dikembangkan oleh Bell Laboratories (dulu dikenal sebagai AT&T, sekarang bernama Lucent Technologies) oleh John Chambers dkk. Sekarang anda tahu kan bahwa R bukanlah satu-satunya bahasa pemrograman yang bernama unik. 
 
@@ -29,26 +27,26 @@ Perintah dasar dalam bahasa R telah menyediakan berbagai _tool_ untuk pemodelan 
 
 Testimoni dari para pengembang dan pengguna R menyebutkan bahwa salah satu kelebihannya adalah sifatnya yang dapat diulang (_reproducible_) dan mampu menghasilkan keluaran grafis berkualitas tinggi untuk keperluan publikasi ilmiah. Jadi mengapa anda tidak belajar mulai sekarang. Anda tidak akan sendiri karena kesulitan anda pasti ada jawabnya.  
 
-## Mengapa R
+# Mengapa R
 
 Mengapa orang menggunakan R? Beberapa alasannya adalah sebagai berikut.
 
-### R gratis, _open source_, dan _cross platform_
+## R gratis, _open source_, dan _cross platform_
 
 Alasan utama pasti karena gratis. Tidak hanya gratis tapi juga _open source_. Apa artinya? Kita tidak hanya bisa membuat paket tambahan saja, tetapi juga bisa memodifikasi kode dasar R. Tentunya ini diperuntukkan bagi yang memahami dasar pemrograman atau yang memang profesinya sebagai pengembang (_developer_). Namun demikian, dengan banyaknya paket tambahan R, maka mestinya sudah banyak pula tutorial untuk membuatnya. Bahkan saat ini, saya memperhatikan, kebanyakan mahasiswa master atau PhD di luar negeri yang menggunakaan statistik dan R dalam risetnya, membuat _package_ sendiri sesuai kebutuhan risetnya. R juga tersedia untuk tiga sistem operasi mayor atau istilah kerennya _cross platform_, yaitu: Linux (Ubuntu, Fedora), Mac OS, dan Windows. 
 
-### R mendukung prinsip _reproducibility_
+## R mendukung prinsip _reproducibility_
 
 R adalah aplikasi berbasis _command line_, artinya setiap perintah harus diketik sebagai baris perintah. Tidak seperti SPSS, Statistica, atau Minitab, yang berbasis _point and click_ serta _drag and drop_. Karena menggunakan baris perintah, maka anda dapat berbagi hasil analisis dengan mudah, cukup dengan mengirimkan baris kode perintah dan datasetnya. Dengan menjalankan ulang baris perintah terhadap dataset tersebut, maka orang lain, misal rekan kerja anda, dapat mengulang proses dan analisis yang anda kerjakan secara persis sama. Prinsip ini disebut sebagai _reproducibility_. Anda tidak perlu mengirimkan _screenshot_ layar dan grafik berformat jpeg hanya untuk menjelaskan proses yang anda kerjakan dan hasilnya. Rekan kerja anda pun cukup meng-_copy paste_ kode perintah ke dalam layar R Studio atau R base-nya. Apakah R Studio dan R base itu. Akan dijelaskan tidak lama lagi.
 
-### R menghasilkan visualisasi yang berkualitas tinggi 
+## R menghasilkan visualisasi yang berkualitas tinggi 
 
 R juga mendukung para peneliti untuk membuat grafik yang berkualitas baik, atau biasa disebit _publication quality images_. Ini karena redaksi jurnal ilmiah biasanya mensyaratkan resolusi dan format grafik khusus, yang tidak dapat dibuat dengan menggunakan piranti lunak _spreadsheet_ biasa seperti Ms Excel atau LibreOffice Sheet. Fasilitas ini tentu saja sangat membantu kita yang berprofesi sebagai dosen dan peneliti. Visualisasi yang dapat dibuat dengan R, tapi tidak dengan Excel, misalnya: 
 
 + menyandingkan dua atau lebih grafik dengan format sumbu yang sama. Cara yang biasa dilakukan adalah meng-copy beberapa grafik dan menempelkannya secara manual. Akibatnya format sumbu, kisaran nilai maks dan min dapat saja berbeda. 
 + menampilkan identitas data pada grafik. Excel hanya dapat memunculkan nilai sumbu x atau y, tapi tidak dapat menampilkan identitas data.
 
-## Mengenal Lingkungan R
+# Mengenal Lingkungan R
 
 R bukan hanya sebuah bahasa pemrograman. Ia adalah lingkungan pengembangan terintegrasi (_integrated development environment_ atau sering disingkat IDE). Beberapa komponen penyusun R dapat dijelaskan secara singkat sebagai berikut:
 
@@ -59,7 +57,7 @@ R bukan hanya sebuah bahasa pemrograman. Ia adalah lingkungan pengembangan terin
 + __Package tambahan__: ini adalah pengembangan dari kode dasar R base. Tiap _package_ memiliki kemampuan spesifik, tergantung kepada si pembuatnya. Terdapat ribuan _package_ di server CRAN saat ini. Akan sangat membingungkan. Untuk itu tiap _package_ yang diunggah di CRAN, wajib memiliki dokumentasi atau _manual book_. Dokumentasi tersebut memiliki spesifikasi minimum agar seragam, yang memudahkan para pengguna, yaitu kita para non-programmers. 
 
 
-## Instalasi R
+# Instalasi R
 
 Sekarang mulailah "pekerjaan kotor kita", yaitu menginstalasi R ke dalam PC atau laptop kita. Untuk itu coba perhatikan beberapa hal berikut ini:
 
@@ -96,7 +94,7 @@ Setelah proses pengunduhan selesai, jalankan file program instalasinya:
 + Untuk Mac OSX: jalankan file `xRstudioxx.dmg` dan ikuti perintahnya
 + Untuk Windows: jalankan file `xRstudioxx.exe` dan ikuti perintahnya
 
-## Menggunakan buku ini
+# Menggunakan buku ini
 
 Buku ini merupakan buku tutorial R pertama dalam Bahasa Indonesia. Kami berdua bukanlah programmer. Saya, penulis pertama, berlatar belakang pendidikan geologi dan Prana Ugi, penulis kedua, menyelesaikan pendidikan sarjana dan magisternya di bidang matematika dan statistik. Jadi kami merasakan sulitnya belajar bahasa pemrograman, sehingga kami menggunakan cara yang paling sederhana untuk menjelaskan berbagai fungsi dan operasi R dalam buku ini. Pada banyak tempat kami melakukan pengulangan dan alur cerita yang lambat, yang mungkin akan membosankan bagi para programmer.
 
@@ -109,4 +107,14 @@ Untuk menggunakan buku ini mudah dan sederhana. Kalau anda pemula, maka mulailah
 
 Mudah bukan.
 
+# Tautan bermanfaat
 
++ [Rpubs](www.rpubs.com)
++ [Stackoverflow](www.stackoverflow.com)
++ [DasaptaErwin](www.dasaptaerwin.net/wp)
++ [Situs R Studio](http://www.rstudio.com/) 
++ [R base packages](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html)
++ [R Commander](http://www.rcommander.com/)
++ [R-evolution](http://blog.revolutionanalytics.com/2013/05/how-r-grows.html)
++ [R user group](http://r-users-group.meetup.com/)
++ [R project](http://www.r-project.org/)

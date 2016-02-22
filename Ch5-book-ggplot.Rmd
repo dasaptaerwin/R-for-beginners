@@ -1163,10 +1163,12 @@ Pengaturan posisi biasanya digunakan untuk data diskrit. Data kontinyu umumnya t
 4. Kapan kita dapat menggunakan plot area yang bertumpuk (_stacked area plot_)? Apa saja kelebihan dan kekurangannya bila dibandingkan dengan plot garis (_line plot_)?
 
 
-# Tautan terkait
+# Tautan bermanfaat
 
 + [Quick R](http://www.statmethods.net/graphs/)
 + [Build a plot layer by layer](https://rpubs.com/hadley/ggplot2-layers)
 + [Tutorial ggplot2 Harvard University](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html)
 + [ggplot2 presentation - Hadley Wickham](https://docs.google.com/viewer?url=http%3A%2F%2Fggplot2.org%2Fresources%2F2007-vanderbilt.pdf)
 + [Lee Mendelowitz blog on plotting using R's base graph functions ](https://leemendelowitz.github.io/blog/r-base-graphics-plotting.html)
++ + [`lattice`](https://stat.ethz.ch/R-manual/R-devel/library/lattice/html/Lattice.html) 
++ [`ggplot2`](https://cran.r-project.org/web/packages/ggplot2/index.html)

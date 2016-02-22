@@ -1,5 +1,5 @@
 ---
-title: "Pengenalan bahasa pemrograman R: untuk non-programmer"
+title: "Bab 2 Mengenal data"
 author: "Dasapta Erwin Irawan dan Prana Ugi"
 date: "August 23, 2015"
 output:
@@ -17,6 +17,10 @@ output:
 ... By the way, the word "data" is plural, so ordinarily you would not say "data is" or "data was." You would say "data are" and "data were." 
 ... [King WB](http://ww2.coastal.edu/kingw/statistics/R-tutorials/objects.html)
 ```
+
+# Pendahuluan
+
+Dalam bab ini kami akan mengenalkan beberapa hal tentang data. Peranan data yang sangat penting membuat data perlu dipahami sejak awal sebelum analisis dilakukan. Data yang kami maksud di sini bukanlah data seperti yang biasa kita buat dengan piranti lunak _spreadsheet_ yang mengandung: judul data, kolom yang tergabung (_merged_), atau baris yang tergabung. Sedikit berbeda. 
 
 # Data punya peran sentral
 
