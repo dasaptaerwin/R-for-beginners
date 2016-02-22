@@ -13,7 +13,7 @@ output:
 ---
 
 
-# Manipulasi data dengan R 
+# Manipulasi data dengan R base 
 
 ## Mengetahui struktur data
 
@@ -44,9 +44,9 @@ Walaupun R dapat mengedit tabel atau dataset, tapi kami sangat menyarankan agar 
 
 Kita mungkin perlu menyatukan dua data frame, berdasarkan kolom (_column_) atau baris (_row_). Dalam R hal ini dilakukan dengan fungsi dasar `cbind()` (_column bind_) dan `rbind()` (_row bind_). Kita akan mengulang beberapa baris perintah yang pernah anda buat pada Bab 2. 
 
-## Menyatukan dua data frame dengan `merge()`
+## Mengkombinasi dua data frame dengan `merge()`
 
-
+Perintah `merge() adalah untuk mengkombinasi data frame dengan memperhatikan kolom atau baris yang sama dalam dua data frame yang berbeda.
 
 ```
 # membuat data frame
@@ -84,8 +84,10 @@ dftotal <- merge(df1, df2, by='ref', all.y = T, sort= T)
 dftotal
 ```
 
+Terlihat bedanya?
 
-## dplyr package
+
+## Memanipulasi data dengan `dplyr` package
 
 Package `dplyr` adalah package yang diperlukan untuk melakukan manipulasi data frame. Kelebihan `dplyr`:
 
