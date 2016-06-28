@@ -1,5 +1,5 @@
 ---
-title: "Bab 2 Mengenal data"
+title: "Pengenalan bahasa pemrograman R: untuk non-programmer"
 author: "Dasapta Erwin Irawan dan Prana Ugi"
 date: "August 23, 2015"
 output:
@@ -17,10 +17,6 @@ output:
 ... By the way, the word "data" is plural, so ordinarily you would not say "data is" or "data was." You would say "data are" and "data were." 
 ... [King WB](http://ww2.coastal.edu/kingw/statistics/R-tutorials/objects.html)
 ```
-
-# Pendahuluan
-
-Dalam bab ini kami akan mengenalkan beberapa hal tentang data. Peranan data yang sangat penting membuat data perlu dipahami sejak awal sebelum analisis dilakukan. Data yang kami maksud di sini bukanlah data seperti yang biasa kita buat dengan piranti lunak _spreadsheet_ yang mengandung: judul data, kolom yang tergabung (_merged_), atau baris yang tergabung. Sedikit berbeda. 
 
 # Data punya peran sentral
 
@@ -411,7 +407,6 @@ df
 
 Anda akan melihat bahwa data frame "iris" terdiri dari lima variabel (dalam kolom) dan 150 observasi (dalam baris). Data frame "mtcars" terdiri dari 11 variabel dan 32 observasi. Tipe obyek data frame akan sering kita pakai dalam R.
 
-<<<<<<< HEAD
 # Mengatur direktori kerja
 
 Seperti halnya piranti lunak yang lain, R perlu mengetahui di direktori manakah kita akan bekerja. Untuk mengaturnya bisa menggunakan perintah baris atau menggunakan menu di menu bar.
@@ -431,8 +426,7 @@ Untuk mengetahui posisi direktori terakhir, gunakan perintah:
 `getwd()`
 
 ![Setting direktori kerja menggunakan menu bar](~/Documents/2016/Github/Rforbeginners/tab-fig/setFolder.png)
-=======
->>>>>>> a5e09cf56e475053113d6447cfc0dc948b547673
+
 
 # Mengimpor data ke dalam R
 
@@ -497,7 +491,6 @@ Dari latihan di atas, kami sarankan:
 
 + simpanlah file data dalam format `*.csv` atau `*.xls`, manfaatkan package seperti `readxl`, `foreign`, atau `gdata` untuk membaca berbagai format file data lainnya.
 + unduhlah terlebih dahulu file data sebelum diimpor ke dalam R. 
-
 
 
 # References

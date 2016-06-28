@@ -50,17 +50,6 @@ Anda harus memahami bahasa R sebelum dapat membuat perintah kode dalam R. Bahasa
 
 Bab ini akan membahas bagaimana anda memanfaatkan fungsi dan argumen untuk membantu anda menganalisis data. Dasar-dasar format (syntax) kode perintah dalam R akan disampaikan dengan beberapa contoh aplikatif.
 
-Fungsi (_fungctions_)
-
-
-
-Argumen (_arguments_)
-
-
-
-
-
-
 # BAB 4
 
 
