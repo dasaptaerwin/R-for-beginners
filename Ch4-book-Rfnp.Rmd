@@ -12,12 +12,8 @@ output:
     highlight: "pygments"
 ---
 
-<<<<<<< HEAD
-# Menggunakan fungsi dasar R (_base function_)
-=======
 
 # Manipulasi data dengan R base 
->>>>>>> 804e0da3b47257227493e610b78ef976d26f3b0e
 
 ## Mengetahui struktur data
 
@@ -48,15 +44,9 @@ Walaupun R dapat mengedit tabel atau dataset, tapi kami sangat menyarankan agar 
 
 Kita mungkin perlu menyatukan dua data frame, berdasarkan kolom (_column_) atau baris (_row_). Dalam R hal ini dilakukan dengan fungsi dasar `cbind()` (_column bind_) dan `rbind()` (_row bind_). Kita akan mengulang beberapa baris perintah yang pernah anda buat pada Bab 2. 
 
-<<<<<<< HEAD
-## Menyatukan dua data frame dengan `merge()`
-
-Perintah `merge()` menggabungkan dua data frame dengan memperhatikan nama kolom dan baris yang sama. Perintah ini akan menggabungkan dua data frame yang berbeda dimensi menjadi satu data frame asal ada bagian keduanya yang sama, walaupun hanya ada satu baris atau satu kolom. Pada akhir penggabungan, maka baris atau kolom yang tidak ada ekivalensinya akan ditandai dengan `NA` (_not available_). Langkah anda berikutnya adalah memutuskan apakah cell tersebut tetap berisi simbol `NA` dengan resiko pada analisis lanjutan ada kemungkinan akan dihilangkan oleh R, atau menggantinya dengan angka `0`.
-=======
 ## Mengkombinasi dua data frame dengan `merge()`
 
 Perintah `merge() adalah untuk mengkombinasi data frame dengan memperhatikan kolom atau baris yang sama dalam dua data frame yang berbeda.
->>>>>>> 804e0da3b47257227493e610b78ef976d26f3b0e
 
 ```
 # membuat data frame
@@ -97,11 +87,7 @@ dftotal
 Terlihat bedanya?
 
 
-<<<<<<< HEAD
-# Menggunakan package `dplyr` 
-=======
 ## Memanipulasi data dengan `dplyr` package
->>>>>>> 804e0da3b47257227493e610b78ef976d26f3b0e
 
 Package `dplyr` adalah package yang diperlukan untuk melakukan manipulasi data frame. Kelebihan `dplyr`:
 
@@ -121,7 +107,7 @@ Bagi yang belum menginstalasi package ini, silahkan melakukan instalasi dengan p
 
 `install.packages("dplyr")`
 
-## Start
+### Start
 
 Mulailah dengan memuat library package `dplyr` dan data frame `hflights`. Data `hflights` adalah contoh data yang diambil dari data penerbangan dari dua bandara di Houston US pada tahun 2011.
 
@@ -133,19 +119,17 @@ library(hflights)
 # explore data
 data(hflights)
 head(hflights)
-```
 
 Tampilan sedikit agak kacau bukan. Kita bisa mengakalinya dengan membuat “local data frame” bernama “flights” agar tampilan bisa kita atur. Ketik perintah di bawah ini dan bandingkan tampilannya dengan sebelumnya.
 
-```
 # convert to local data frame
 flights <- tbl_df(hflights)
-flights # memperlihatkan hanya 10 baris dan dengan jumlah kolom mengikuti lebar layar
-```
+
+# printing only shows 10 rows and as many columns as can fit on your screen
+flights
 
 Kalau masih kurang memuaskan, anda bisa mengatur berapa jumlah baris yang mau anda lihat (misalkan 20 baris) dengan perintah berikut.
 
-```
 # you can specify that you want to see more rows
 print(flights, n=20)
 
@@ -153,12 +137,13 @@ print(flights, n=20)
 data.frame(head(flights))
 ```
 
-## `filter()`
+### `filter()`
 
 Fungsi `filter()` adalah untuk memilih baris atau mengelompokkan baris berdasarkan kriteria yang anda miliki. Fungsi ini sebenarnya telah tersedia dalam R secara default, namun package `dplyr` membuatnya lebih mudah. Sekarang kita bandingkan kedua fungsi Filter() tersebut. Perintah berikut ini melakukan filter kolom `Month` (“AND”) kolom `DayofMonth` yang nilainya sama dengan 1.
 
 ```
-# melihat semua penerbangan di tanggal 1 Januari menggunakan fungsi dasar R
+# melihat semua penerbangan di tanggal 1 Januari menggunakan fungsi dasar R untuk 
+
 flights[flights$Month==1 & flights$DayofMonth==1, ]
 
 # melihat semua penerbangan di tanggal 1 Januari menggunakan dplyr
@@ -169,17 +154,17 @@ filter(flights, Month==1 & DayofMonth==1)
 
 Anda bisa lihat bahwa dengan `dplyr` kita cukup mengetik nama kolomnya saja (misal "namaPenerbangan"), bukan `data.frame$namakolom` (misal: "data$namaPenerbangan").
 
-Anda bisa menggunakan operator “ATAU” (“OR”), misalkan anda hanya ingin melihat data penerbangan dari perusahaan (kolom UniqueCarrier) “AA” atau “UA”. Gunakan alur "piping" menggunakan simbol operator `|` atau `%n%`. Kedua simbol tersebut digunakan untuk menggabungkan dua perintah atau lebih pada baris yang sama (di dalam package `dplyr`).
+Anda bisa menggunakan operator “ATAU” (“OR”), misalkan anda hanya ingin melihat data penerbangan dari perusahaan (kolom UniqueCarrier) “AA” atau “UA”.
 
 ```
-# gunakan perintah `piping` untuk mengatur kondisi fungsi 
+# use pipe for OR condition
 filter(flights, UniqueCarrier=="AA" | UniqueCarrier=="UA")
 
 #atau menggunakan operator `%in%` 
 filter(flights, UniqueCarrier %in% c("AA", "UA"))
 ```
 
-## `select()`
+### `select()`
 
 Fungsi ini juga ada dalam daftar fungsi dasar R. Coba kita bandingkan dengan perintah dalam dply. Perintah dibawah ini untuk memilih kolom “DepTime”, “ArrTime”, dan “FlightNum”. Ketiga kolom tersebut tidak menerus.
 
@@ -199,7 +184,7 @@ Sekarang bagaimana bila kolom yang akan anda pilih, menerus. Gunakan “:”. Da
 select(flights, Year:DayofMonth, contains("Taxi"), contains("Delay"))
 ```
 
-## `arrange()`
+### `arrange()`
 
 Fungsi ini membantu anda untuk memilih beberapa kolom dan mengurutkan (sorting) set kolom tersebut berdasarkan kolom tertentu. Kali ini kita akan memilih kolom “UniquesCarrier” dan “DepDelay” dan menyortirnya berdasarkan kolom “DepDelay” secara ascending atau dari nilai kecil ke besar.
 
@@ -211,7 +196,7 @@ Urutan kode dengan fungsi dasar R adalah sebagai berikut, yang akan kita banding
 
 
 ```
-# menggunakan fungsi dasar R untuk memilih (select) kolom "UniqueCarrier" dan "DepDelay" dan menyortirnya berdasarkan kolom "DepDelay""
+# base R approach to select UniqueCarrier and DepDelay columns and sort by DepDelay
 flights[order(flights$DepDelay), c("UniqueCarrier", "DepDelay")]
 
 # Dengan urutan yang sama kita pakai teknik dplyr
@@ -225,7 +210,7 @@ flights %>%
     arrange(desc(DepDelay))
 ```
 
-## `mutate()`
+### `mutate()`
 
 Dengan fungsi ini anda bisa membuat kolom baru (new column or new variable) berdasarkan suatu fungsi. Bila anda menggunakan fungsi default R, maka urutan kodenya adalah:
 
@@ -257,7 +242,7 @@ flights %>%
 flights <- flights %>% mutate(Speed = Distance/AirTime*60)
 ```
 
-## `summarise()`
+### `summarise()`
 
 Fungsi ini untuk melihat ringkasan (summary) dari suatu kolom (variabel) atau grup kolom (group of variables). Sebagai contoh, jika anda ingin menghitung rata-rata delay kedatangan (arrival delay) untuk tiap tujuan (destination), maka alurnya sbb jika menggunakan fungsi default R:
 
@@ -267,7 +252,7 @@ Fungsi ini untuk melihat ringkasan (summary) dari suatu kolom (variabel) atau gr
 
 
 ```
-# menggunakan fungsi dasar 
+# menggunakan fyngsi dasar 
 head(with(flights, tapply(ArrDelay, Dest, mean, na.rm=TRUE)))
 
 # atau gunakan or you can use "aggregate"
@@ -314,92 +299,232 @@ flights %>%
     summarise_each(funs(min(., na.rm=TRUE), max(., na.rm=TRUE)), matches("Delay"))
 ```
 
-# Menggunakan package "reshape2"
+## Mengubah format data dengan package "reshape" atau "reshape2"
 
-Format yang dimaksud di sini adalah mengubah format data lebar (_wide_) data menjadi format data panjang (_long_) atau sebaliknya. Dalam bahasa sehari-hari, _reshape_ sama dengan _transpose_. Berikut ini adalah contoh _wide_ data format.
+Format yang dimaksud di sini adalah mengubah format data lebar (_wide_) data menjadi format data panjang (_long_) atau sebaliknya. Dalam bahasa sehari-hari, _reshape_ sama dengan _transpose_. Kali ini kita akan menggunakan package `reshape2` sebagai pembaruan dari package `reshape` oleh Hadley Wickham. 
 
-|   | ozone  | wind     | temp |
-|---|--------|----------|------|
-| 1 | 23.62  | 11.623   | 65.5 |
-| 2 | 29.44  | 10.267   | 79.10|
-| 3 | 59.12  | 8.942    | 83.90|
-| 4 | 59.96  | 8.794    | 83.97|
+Si Pembuat, Hadley Wickham menggunakan prinsip melelehkan ("melt") data frame untuk kemudian dicetak ("cast") dengan bentuk data frame sesuai keinginan kita. Data "dilelehkan" untuk membuat kombinasi id-variabel yang unik untuk setiap barisnya. Ketik beberapa perintah berikut ini. 
 
-Berikut ini adalah contoh _long_ data format.
-
-|   | variable  | value   |
-|---|-----------|---------|
-| 1 |    ozone  | 23.615  |
-| 2 |    ozone  | 29.444  |
-| 3 |    ozone  | 59.115  |
-| 4 |    ozone  | 59.962  |
-| 5 |     wind  | 11.623  |
-| 6 |     wind  | 10.267  |
-| 7 |     wind  |  8.942  |
-| 8 |     wind  |  8.794  |
-| 9 |     temp  | 65.548  |
-| 10|     temp  | 79.100  |
-| 11|     temp  | 83.903  |
-| 12|     temp  | 83.968  |
-
-Kali ini kita akan menggunakan package `reshape2` sebagai pembaruan dari package `reshape` oleh Hadley Wickham. Si Pembuat, Hadley Wickham menggunakan prinsip melelehkan ("melt") data frame untuk kemudian dicetak ("cast") dengan bentuk data frame sesuai keinginan kita. Data "dilelehkan" untuk membuat kombinasi id-variabel yang unik untuk setiap barisnya. Ketik beberapa perintah berikut ini. Kita akan menggunakan data `air quality` yang sudah terinstalasi dalam instalasi R.
-
-Dalam R proses _transpose_ dilakukan dengan menggunakan perintah melt()` dan `cast()`. Fungsi `melt()` mengubah _wide_ format data dan melelehkannya (`melt`) menjadi _long_ format, sedangkan `cast()` mengubah _long_ format dan mencetaknya (`cast`) menjadi _wide_format. Jangan lupa diawali dengan `install.packages("reshape2")` dan `library(reshape2)`,
+Bilamana anda mengalami masalah dalam instalasi package `reshape2`, coba gunakan package `reshape`. Tinggal ganti nama `reshape2` menjadi `reshape` dalam kode di bawah ini. 
 
 ```
+# Kita akan menggunakan data air quality yang sudah terinstalasi dalam sistem R
+# example of melt function
+install.packages("reshape2")
+library(reshape2)
+```
+
+Berikut ini adalah contoh `wide data format`. Jumlah kolom lebih banyak dibandinkan jumlah baris.
+
+```
+#   ozone   wind  temp
+# 1 23.62 11.623 65.55
+# 2 29.44 10.267 79.10
+# 3 59.12  8.942 83.90
+# 4 59.96  8.794 83.97
+```
+
+Sebaliknya, ini adalah `long data format`. Jumlah kolom lebih sedikit dibadingkan jumlah baris. 
+
+```
+#    variable  value
+# 1     ozone 23.615
+# 2     ozone 29.444
+# 3     ozone 59.115
+# 4     ozone 59.962
+# 5      wind 11.623
+# 6      wind 10.267
+# 7      wind  8.942
+# 8      wind  8.794
+# 9      temp 65.548
+# 10     temp 79.100
+# 11     temp 83.903
+# 12     temp 83.968
+```
+
+Dalam praktek, `long data format` biasanya digunakan untuk data _time series_, sedangkan `wide data format` umum digunakan untuk data _spatial_. 
+
+Untuk mengubah format, kita dapat menggunakan `reshape2` package. Fungsi dasarnya ada dua: 
+
+- `melt`: mereformat `wide-format`  `long-format`;
+- `cast`: mengubah `long-format` menjadi `wide-format`.  
+
+Kita coba package ini dengan memanfaatkan data `airquality` yang sudah terinstalasi dalam R. 
+
+Pertama kita mengubah nama-nama kolom menggunakan `lower case`. Dalam analisis data biasanya memang kita tidak terlalu mengutamakan nama kolom yang panjang dan deskriptif cukup nama pendek terdiri dari beberapa huruf dan (sebaiknya) `lower case`.
+
+```
+# mengubah nama kolom dari `sentence case` menjadi `lower case`
 names(airquality) <- tolower(names(airquality))
 head(airquality)
 ```
 
-## Mengubah _wide_ to _long_ format dengan `melt()` 
-
-Kita coba fungsi `melt()` dengan argumen standar. 
+Outputnya...
 
 ```
-head(airquality)
-aql <- melt(airquality) 
+#   ozone solar.r wind temp month day
+# 1    41     190  7.4   67     5   1
+# 2    36     118  8.0   72     5   2
+# 3    12     149 12.6   74     5   3
+# 4    18     313 11.5   62     5   4
+# 5    NA      NA 14.3   56     5   5
+# 6    28      NA 14.9   66     5   6
+```
+
+Kita beri nama data frame menjadi `aql`.
+
+```
+# renaming data frame to aql
+aql <- melt(airquality) # [a]ir [q]uality [l]ong format
+# checking data frame
 head(aql)
 tail(aql)
 ```
-
-Secara baku, fungsi `melt()` akan menganggap seluruh kolom dengan nilai numerik adalah variabel dengan nilai tertentu. Tapi terkadang kita ingin memposisikan salah satu kolom sebagai identitas (id) data. Jadi kita dapat memberitahu variable identitas (ID variables). Variabel inilah yang nantinya akan menjadi identitas baris dalam data tersebut. Gunakan perintah berikut.
+Outputnya `head()` ...
 
 ```
-head(airquality)
+#   variable value
+# 1    ozone    41
+# 2    ozone    36
+# 3    ozone    12
+# 4    ozone    18
+# 5    ozone    NA
+# 6    ozone    28
+```
+
+Output `tail()`...
+
+```
+#     variable value
+# 913      day    25
+# 914      day    26
+# 915      day    27
+# 916      day    28
+# 917      day    29
+# 918      day    30
+```
+
+Mengatur `ID variables` atau kolom variable yang digunakan sebagai identitas data. 
+
+```
+# mengatur ID variables
 aql <- melt(airquality, id.vars = c("month", "day"))
 head(aql)
 ```
 
-Atau kita ingin mengendalikan nama kolom dalam _long_ data format yang baru. Fungsi `melt()` memungkinkan itu dapat dilakukan dalam satu langkah.
+Outputnya ...
 
 ```
-head(airquality)
+#   month day variable value
+# 1     5   1    ozone    41
+# 2     5   2    ozone    36
+# 3     5   3    ozone    12
+# 4     5   4    ozone    18
+# 5     5   5    ozone    NA
+# 6     5   6    ozone    28
+```
+
+Kita coba menggunakan fungsi `melt`.
+
+```
 aql <- melt(airquality, id.vars = c("month", "day"),
-            variable.name = "variabel_iklim", 
-            value.name = "nilai_iklim")
+  variable.name = "climate_variable", 
+  value.name = "climate_value")
 head(aql)
 ```
-
-## Mengubah _long_ to _wide_ format dengan `cast()`
-
-Mengubah format data _wide_ menjadi _long_ dengan `melt()` sedikit lebih mudah. Tapi untuk mengubah dari _long_ menjadi _wide_ perlu sedikit upaya lebih. Dalam `reshape2` terdapat banyak fungsi `cast()`: 
-
-- `dcast()` untuk data frame
-- `acast()` untuk tipe vector, matrix, atau array.
-
-Karena saat ini kita bekerja dengan data frame, maka fungsi yang digunakan adalah `dcast()`. Fungsi ini mempunyai aturan bahwa argumen yang ada di ruas kiri dari simbol `~` adalah ID variable yang ditentukan oleh perintah `id.vars=c("xxx", "yyy")`, sedangkan yang ada di ruas kanan adalah nilai variable.
+Outputnya, data frame kita berubah menjadi seperti ini.
 
 ```
-head(airquality)
-aql <- melt(airquality, id.vars = c("month", "day")) 
+#   month day climate_variable climate_value
+# 1     5   1            ozone            41
+# 2     5   2            ozone            36
+# 3     5   3            ozone            12
+# 4     5   4            ozone            18
+# 5     5   5            ozone            NA
+# 6     5   6            ozone            28
+```
+
+Selanjutnya kita coba fungsi `cast`. Fungsi `cast` punya banyak variasi. Bilamana anda lebih sering menggunakan tipe data frame dalam pekerjaan, maka gunakan fungsi `dcast`. Untuk tipe vector, matrix, atau array, anda dapat menggunakan fungsi `acast`.
+
+```
+# mengubah data frame airquality menjadi aql dengan id vars month dan day
+aql <- melt(airquality, id.vars = c("month", "day"))
+
+# mengubah data frame aql menjadi aqw
 aqw <- dcast(aql, month + day ~ variable)
 head(aqw)
 ```
 
-Masih banyak lagi output yang dapat dihasilkan fungsi `dcast()`. Anda dapat menggunakan perintah `?dcast()` untuk mengeksplorasi lebih jauh. 
+Outputnya menjadi ...
 
+```
+#   month day ozone solar.r wind temp
+# 1     5   1    41     190  7.4   67
+# 2     5   2    36     118  8.0   72
+# 3     5   3    12     149 12.6   74
+# 4     5   4    18     313 11.5   62
+# 5     5   5    NA      NA 14.3   56
+# 6     5   6    28      NA 14.9   66
+```
+Bandingkan dengan data awal.
 
-# Tautan bermanfaat
+```
+head(airquality) # original data
+```
+Output data awal...
+
+```
+#   ozone solar.r wind temp month day
+# 1    41     190  7.4   67     5   1
+# 2    36     118  8.0   72     5   2
+# 3    12     149 12.6   74     5   3
+# 4    18     313 11.5   62     5   4
+# 5    NA      NA 14.3   56     5   5
+# 6    28      NA 14.9   66     5   6
+```
+
+Coba beberapa baris berikut ini. 
+
+One confusing “mistake” you might make is casting a dataset in which there is more than one value per data cell. For example, this time we won’t include day as an ID variable:
+
+```
+dcast(aql, month ~ variable)
+```
+
+Outputnya ...
+
+```
+#   month ozone solar.r wind temp
+# 1     5    31      31   31   31
+# 2     6    30      30   30   30
+# 3     7    31      31   31   31
+# 4     8    31      31   31   31
+# 5     9    30      30   30   30
+```
+
+Mestinya akan muncul peringatan: `Aggregation function missing: defaulting to length`.
+
+Coba kode ini untuk `cast` data `aql` dengan ID var month dan agregasi mean, hilangkan data yang mengandung NA.
+
+```
+dcast(aql, month ~ variable, fun.aggregate = mean, 
+  na.rm = TRUE)
+```
+
+Outputnya ...
+
+```
+#   month ozone solar.r   wind  temp
+# 1     5 23.62   181.3 11.623 65.55
+# 2     6 29.44   190.2 10.267 79.10
+# 3     7 59.12   216.5  8.942 83.90
+# 4     8 59.96   171.9  8.794 83.97
+# 5     9 31.45   167.4 10.180 76.90
+```
+
+Anda akan perlu melakukan beberapa kali googling dan mencoba berbagai variasi kode untuk melihat output yang sesuai dengan kebutuhan.
+
+# Tautan terkait
 
 + [Tutorial data manipulation dari Rutgers Uni](https://docs.google.com/viewer?url=https%3A%2F%2Fwww.rci.rutgers.edu%2F~rwomack%2FIASSIST%2FCode%2FDataManipulationR.pdf)
 + [Situs Cook book R](http://www.cookbook-r.com/Manipulating_data/Sorting/)
@@ -410,4 +535,3 @@ Masih banyak lagi output yang dapat dihasilkan fungsi `dcast()`. Anda dapat meng
 + [Blog: Dataschool.io, by: Kevin Markham (@justmarkham)](http://www.dataschool.io/dplyr-tutorial-for-faster-data-manipulation-in-r/)
 + [Blog Sean Anderson](http://seananderson.ca/)
 + [reshape2 website](http://had.co.nz/reshape/)
-

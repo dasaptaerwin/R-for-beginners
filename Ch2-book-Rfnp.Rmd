@@ -26,9 +26,6 @@ Data adalah salah satu bagian sentral dari R, bagian yang lainnya adalah kode da
 - proses: berupa kumpulan kode perintah
 - output: berupa tabel dan plot
 
-
-![Komponen input dan output dalam R](~/Documents/2016/Github/Rforbeginners/tab-fig/inputOutputR.png)
-
 Data adalah bahan baku R. Ia berperan sebagai input. Kalau anda mahasiswa pasti sering berhadapan dengan _spreadsheet_ maka itulah salah satu contoh data, dalam hal ini adalah data eksternal. Anda harus mengimpor data tersebut ke dalam format yang dapat dibaca oleh R. Pada bagian berikutnya akan kami perlihatkan cara untuk melakukan langkah tersebut.
 
 R memiliki beberapa data yang terinstalasi secara _default_ di dalamnya. Ini dibuat untuk keperluan latihan biasanya, beberapa data yang sering dipakai sebagai contoh misalnya: 
@@ -38,10 +35,6 @@ R memiliki beberapa data yang terinstalasi secara _default_ di dalamnya. Ini dib
 + ```rivers```: data panjang 141 sungai utama di Amerika Utara (dalam mil) yang dikompilasi oleh USGS.
 
 Coba anda lihat jendela ```Global Environments``` kanan atas. Klik menu _dropdown_ (seperti pada gambar berikut), maka anda akan melihat banyak dataset yang terinstalasi dalam sistem R. Masing-masing dataset tersebut bersifat bebas pakai dan dapat digunakan dalam latihan R anda.
-
-![Menu dropdown ```Global Environment``` yang berisi dataset](~/Documents/2016/Github/Rforbeginners/tab-fig/listDataset1.png)
-
-![Daftar dataset yang terinstalasi dalam sistem R](~/Documents/2016/Github/Rforbeginners/tab-fig/listDataset2.png)
 
 Berikut ini adalah bagaimana cara melihat isi dataset. _Copy paste_ baris per baris perintah berikut ini setelah ```R>```di jendela ```console``` (kiri bawha) atau _copy paste_ seluruhnya di jendela ```Script``` (kiri atas) 
 
@@ -261,9 +254,6 @@ Simbol ```<-``` (tanpa spasi diantaranya) dan ```=``` mempunyai efek sama, tetap
 
 Sekarang kita coba lihat ada berapa obyek anda punya di memori R. Dengan perintah berikut, anda akan lihat bahwa di memori R sudah ada tiga obyek bernama: `x`, `y`, `z`. Coba lihat jendela ```Environment``` di kanan atas, atau ketik ```ls()```.
 
-![Tiga obyek di jendela ```Global Environment```](~/Documents/2016/Github/Rforbeginners/tab-fig/globalenv.png)
-
-
 ## Jenis obyek
 
 Semua data yang bisa dibaca oleh R, dinamanakan obyek/_Objects_. Berikut ini adalah beberapa jenis obyek dalam R: 
@@ -424,9 +414,6 @@ Bila anda menggunakan OS Windows, jangan bingung. Simbol  `slash (`/`)` digunaka
 Untuk mengetahui posisi direktori terakhir, gunakan perintah:
 
 `getwd()`
-
-![Setting direktori kerja menggunakan menu bar](~/Documents/2016/Github/Rforbeginners/tab-fig/setFolder.png)
-
 
 # Mengimpor data ke dalam R
 

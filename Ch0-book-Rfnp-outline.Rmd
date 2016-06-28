@@ -44,29 +44,23 @@ Data adalah salah satu bagian sentral dari R, bagian yang lainnya adalah kode da
 - output: berupa tabel dan plot
 
 
-# BAB 3 BAHASA R
+# BAB 3 BAHASA R (Syntax, fungsi dan argumen)
 
 Anda harus memahami bahasa R sebelum dapat membuat perintah kode dalam R. Bahasa R menurut kami sangat mudah dipahami karena sudah dikemas di dalam berbagai fungsi siap pakai. Anda tinggal menggunakannya dengan berbagai argumen yang diperlukan sesuai kebutuhan. 
 
 Bab ini akan membahas bagaimana anda memanfaatkan fungsi dan argumen untuk membantu anda menganalisis data. Dasar-dasar format (syntax) kode perintah dalam R akan disampaikan dengan beberapa contoh aplikatif.
 
-# BAB 4
+# BAB 4 Manipulasi data (dengan R base dan dplyr)
 
-
-# BAB 5
-
+# BAB 5 Plotting data (dengan R base dan ggplot2)
 
 # BAB 6
 
-
 # BAB 7
-
 
 # BAB 8
 
-
 # BAB 9
-
 
 # BAB 10 BEBERAPA CONTOH KODE PROGRAM R
 Beberapa contoh kode program untuk analisis dasar dan analisis statistik diberikan pada bab ini.
@@ -80,13 +74,10 @@ Beberapa contoh kode program untuk analisis dasar dan analisis statistik diberik
 
 # DAFTAR PUSTAKA
 
-https://www.rochester.edu/college/psc/thestarlab/help/rcourse/R-Course.pdf
-
-http://www2.ims.nus.edu.sg/preprints/2006-34.pdf
-
-https://www3.nd.edu/~mclark19/learn/Introduction_to_R.pdf
-
-http://data.princeton.edu/R/introducingR.pdf
+- https://www.rochester.edu/college/psc/thestarlab/help/rcourse/R-Course.pdf
+- http://www2.ims.nus.edu.sg/preprints/2006-34.pdf
+- https://www3.nd.edu/~mclark19/learn/Introduction_to_R.pdf
+- http://data.princeton.edu/R/introducingR.pdf
 
 
 
